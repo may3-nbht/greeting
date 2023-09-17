@@ -1,5 +1,6 @@
 package com.example.greeting.restservice;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,6 @@ public class GreetingController {
 
 	@GetMapping("/")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
+		return new Greeting(counter.incrementAndGet(), String.format(template, name), LocalDateTime.now().toString());
 	}
 }
